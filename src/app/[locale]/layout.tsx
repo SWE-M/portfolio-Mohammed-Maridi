@@ -28,6 +28,9 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
+  verification: {
+    google: "RZ7in97l4Dude9irgKcPop_QJB5F8bQKb5mChRuV1tc", // 🚀 هنا القيمة الصحيحة والمكان الصحيح
+  },
 };
 
 export default async function LocaleLayout({
