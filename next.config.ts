@@ -1,24 +1,17 @@
-import createNextIntlPlugin from 'next-intl/plugin';
-import type { NextConfig } from 'next';
-
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ['192.168.56.1', 'localhost'],
-  // إضافة إعدادات الأمان للسماح بتشغيل الـ 3D shaders
-  async headers() {
-    return [
+  /* إعدادات المشروع الافتراضية هنا */
+  images: {
+    remotePatterns: [
       {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: "script-src 'self' 'unsafe-eval' 'unsafe-inline'; object-src 'none';",
-          },
-        ],
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        port: '',
+        pathname: '/**', // السماح بجميع مسارات الصور القادمة من سانيتي
       },
-    ];
+    ],
   },
 };
 
-export default withNextIntl(nextConfig);
+export default nextConfig;
