@@ -7,11 +7,6 @@ import '../globals.css';
 export const metadata = {
   title: "Eng. Mohammed Maridi | Official Portfolio",
   description: "The official portfolio of Eng. Mohammed Maridi, Software Engineer and IT Specialist. Showcasing premium cloud systems, web applications, and corporate digital solutions.",
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
-  },
   openGraph: {
     title: "Eng. Mohammed Maridi | Official Portfolio",
     description: "Explore cutting-edge cloud projects and premium web development services tailored for visionary businesses and institutions.",
