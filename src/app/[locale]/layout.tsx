@@ -5,8 +5,16 @@ import { routing } from '@/i18n/routing';
 import '../globals.css';
 
 export const metadata = {
-  title: 'Mohammed Muraidi | Portfolio',
-  description: 'Web Developer & IT Specialist Portfolio',
+  title: "Eng. Mohammed Maridi | Official Portfolio",
+  description: "The official portfolio of Eng. Mohammed Maridi, Software Engineer and IT Specialist. Showcasing premium cloud systems, web applications, and corporate digital solutions.",
+  openGraph: {
+    title: "Eng. Mohammed Maridi | Official Portfolio",
+    description: "Explore cutting-edge cloud projects and premium web development services tailored for visionary businesses and institutions.",
+    url: "https://portfolio-mohammed-maridi.vercel.app",
+    siteName: "Mohammed Maridi Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default async function LocaleLayout({
