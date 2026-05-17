@@ -7,6 +7,11 @@ import '../globals.css';
 export const metadata = {
   title: "Eng. Mohammed Maridi | Official Portfolio",
   description: "The official portfolio of Eng. Mohammed Maridi, Software Engineer and IT Specialist. Showcasing premium cloud systems, web applications, and corporate digital solutions.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   openGraph: {
     title: "Eng. Mohammed Maridi | Official Portfolio",
     description: "Explore cutting-edge cloud projects and premium web development services tailored for visionary businesses and institutions.",
@@ -14,7 +19,7 @@ export const metadata = {
     siteName: "Mohammed Maridi Portfolio",
     images: [
       {
-        url: "https://portfolio-mohammed-maridi.vercel.app/opengraph-image.png",
+        url: "https://portfolio-mohammed-maridi.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Eng. Mohammed Maridi Portfolio Logo",
