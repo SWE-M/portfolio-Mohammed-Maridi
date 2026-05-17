@@ -1,0 +1,46 @@
+{
+  "HomePage": {
+    "title": "Eng. Mohammed Maridi",
+    "subtitle": "Web Developer | IT Specialist",
+    "description": "I possess advanced skills in building innovative digital solutions.\nSpecializing in developing professional cloud systems and web platforms that turn your ideas into successful business projects, boosting your profits and streamlining operations.",
+    "contactButton": "Contact Me"
+  },
+  "Projects": {
+    "title": "Key Projects",
+    "mwaeed": {
+      "name": "Mwaeed Platform",
+      "desc": "A comprehensive digital platform for booking and appointment management.",
+      "tech": "Next.js, Python, Django"
+    },
+    "laundry": {
+      "name": "Laundry Management System",
+      "desc": "A comprehensive cloud-based system for managing laundry operations.",
+      "tech": "Django, PostgreSQL, HTML5/CSS3"
+    },
+    "automotive": {
+      "name": "Automotive Workshop System",
+      "desc": "A specialized digital platform for managing auto repair workshops.",
+      "tech": "Python (Django), JavaScript"
+    },
+    "protection": {
+      "name": "Account Protection Tool",
+      "desc": "A specialized tool for auditing account security.",
+      "tech": "HTML, JavaScript"
+    }
+  },
+  "Contact": {
+    "title": "Contact Me",
+    "saudi": "Saudi Number",
+    "qatari": "Qatari Number",
+    "whatsapp": "Chat on WhatsApp",
+    "cta": "I am available for new projects and technical discussions.",
+    "formTitle": "Or send your project details directly",
+    "formName": "Your Name",
+    "formContact": "Contact Number or Email",
+    "formMessage": "Brief description of your project (App type, required features, etc.)...",
+    "formSubmit": "Submit Request"
+  },
+  "Footer": {
+    "copyright": "Eng. Mohammed Maridi. All rights reserved."
+  }
+}
