@@ -12,6 +12,14 @@ export const metadata = {
     description: "Explore cutting-edge cloud projects and premium web development services tailored for visionary businesses and institutions.",
     url: "https://portfolio-mohammed-maridi.vercel.app",
     siteName: "Mohammed Maridi Portfolio",
+    images: [
+      {
+        url: "https://portfolio-mohammed-maridi.vercel.app/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Eng. Mohammed Maridi Portfolio Logo",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
