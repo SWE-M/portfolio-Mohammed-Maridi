@@ -29,7 +29,7 @@ export const metadata = {
     type: "website",
   },
   verification: {
-    google: "RZ7in97l4Dude9irgKcPop_QJB5F8bQKb5mChRuV1tc", // 🚀 هنا القيمة الصحيحة والمكان الصحيح
+    google: "RZ7in97l4Dude9irgKcPop_QJB5F8bQKb5mChRuV1tc", // 🚀 رمز التحقق من قوقل
   },
 };
 
@@ -53,9 +53,32 @@ export default async function LocaleLayout({
   // تحديد اتجاه الصفحة بناءً على اللغة
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
 
+  // كود الـ Schema لتعريف هويتك المهنية وموقعك لمحركات البحث بشكل صريح
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohammed Maridi",
+    "jobTitle": "Software Engineer & IT Specialist",
+    "url": "https://portfolio-mohammed-maridi.vercel.app",
+    "sameAs": [
+      "https://github.com/SWE-M" // رابط حساب الجيت هاب الخاص بك
+    ],
+    "knowsAbout": [
+      "Software Engineering",
+      "Web Development",
+      "Cloud Architecture",
+      "IT Systems"
+    ]
+  };
+
   return (
     <html lang={locale} dir={dir}>
       <body className="bg-slate-900 text-white min-h-screen">
+        {/* حقن بيانات السيو الهيكلية (Schema Markup) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
