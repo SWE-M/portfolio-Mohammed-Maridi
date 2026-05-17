@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
 
-export default async function sitemap(): MetadataRoute.Sitemap {
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://portfolio-mohammed-maridi.vercel.app'
 
-  // يمكنك مستقبلاً جلب روابط المشاريع من Sanity ديناميكياً هنا إذا رغبت
+  // يمكنك مستقبلاً إعادة كلمة async ولف النوع بـ Promise عند جلب المشاريع من Sanity ديناميكياً
   return [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'monthly', priority: 1.0 },
     { url: `${baseUrl}/ar`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
