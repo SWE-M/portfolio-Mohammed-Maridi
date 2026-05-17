@@ -3,6 +3,7 @@
 import SceneWrapper from '@/components/SceneWrapper';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import Image from 'next/image'; // 🚀 استيراد مكون الصور الذكي من Next.js
 
 // إعدادات الحركة لظهور العناصر بنعومة
 const fadeInUp = {
@@ -20,7 +21,7 @@ export default function ClientHome({ projects, texts }: { projects: any[], texts
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-// دالة الإرسال في الخلفية بدون الخروج من الموقع
+  // دالة الإرسال في الخلفية بدون الخروج من الموقع
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // نمنع المتصفح من الانتقال لصفحة أخرى
     setIsSubmitting(true);
@@ -124,11 +125,15 @@ export default function ClientHome({ projects, texts }: { projects: any[], texts
               className="p-3 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:shadow-emerald-500/10 transition-all group overflow-hidden shadow-xl flex flex-col h-full"
             >
               {project.imageUrl && (
-                <div className="overflow-hidden rounded-xl md:rounded-2xl mb-3 md:mb-6 flex items-center justify-center p-2 md:p-4 bg-black/10 shrink-0">
-                  <img 
+                /* 🚀 تم تحويل الحاوية لتدعم خاصية الـ fill مع الحفاظ على الأبعاد المستجيبة */
+                <div className="overflow-hidden rounded-xl md:rounded-2xl mb-3 md:mb-6 flex items-center justify-center p-2 md:p-4 bg-black/10 shrink-0 relative w-full h-20 sm:h-32 md:h-48">
+                  <Image 
                     src={project.imageUrl} 
                     alt={project.title} 
-                    className="w-full h-20 sm:h-32 md:h-48 object-contain group-hover:scale-110 transition-transform duration-700" 
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="object-contain group-hover:scale-110 transition-transform duration-700" 
+                    priority={index < 2} // تسريع تحميل أول مشروعين لتجاوز ترحيل تخطيط الصفحة (LCP)
                   />
                 </div>
               )}
@@ -223,13 +228,12 @@ export default function ClientHome({ projects, texts }: { projects: any[], texts
             </div>
           </div>
 
-          {/* 🚀 نموذج الطلب المباشر الديناميكي المربوط بـ React State */}
+          {/* نموذج الطلب المباشر الديناميكي المربوط بـ React State */}
           <div className="w-full pt-8 md:pt-12 border-t border-white/10 mt-8">
             <h3 className="text-xl md:text-3xl font-bold mb-8 text-center text-white">
               {texts.formTitle}
             </h3>
             
-            {/* 🚀 هنا التعديل السحري: استبدلنا action بـ onSubmit */}
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-2xl mx-auto relative">
               
               <input type="hidden" name="access_key" value="8254334f-0076-48b6-8df5-65f5ca866a28" />
