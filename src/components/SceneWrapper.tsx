@@ -101,11 +101,12 @@ function Wormhole() {
 
       {/* 🚀 ذرات الكود المتطايرة (الزرقاء) */}
       <points ref={particlesRef}>
-        <bufferGeometry>
-          <bufferAttribute attach="attributes-position" count={particlesCount} array={particlesPosition} itemSize={3} />
-        </bufferGeometry>
-        <pointsMaterial 
-          size={0.06} 
+          <bufferGeometry>
+            {/* @ts-ignore */}
+            <bufferAttribute attach="attributes-position" count={particlesCount} array={particlesPosition} itemSize={3} />
+          </bufferGeometry>
+          <pointsMaterial 
+            size={0.06}
           color="#3b82f6" 
           transparent={true} 
           opacity={0.6} 
