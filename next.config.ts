@@ -1,17 +1,20 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+// تفعيل ملحق اللغات والترجمة
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
-  /* إعدادات المشروع الافتراضية هنا */
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'cdn.sanity.io',
-        port: '',
-        pathname: '/**', // السماح بجميع مسارات الصور القادمة من سانيتي
+        pathname: '/**', // السماح برفع واستعراض صور سانيتي بأمان وسرعة
       },
     ],
   },
 };
 
-export default nextConfig;
+// تصدير الإعدادات مدمجة مع نظام اللغات
+export default withNextIntl(nextConfig);
