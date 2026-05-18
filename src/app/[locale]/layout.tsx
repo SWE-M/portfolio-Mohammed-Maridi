@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import '../globals.css';
 import { getTranslations } from 'next-intl/server';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // 🚀 تحويل الـ Metadata لتصبح ديناميكية لتدعم السيو ثنائي اللغة (عربي / إنجليزي) بشكل احترافي
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -94,9 +95,13 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
+
+        {/* 🚀 إضافة ميزة تتبع السرعة والأداء هنا بشكل سليم */}
+        <SpeedInsights /> 
       </body>
     </html>
   );
