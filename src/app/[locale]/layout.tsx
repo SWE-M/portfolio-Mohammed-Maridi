@@ -3,35 +3,50 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import '../globals.css';
+import { getTranslations } from 'next-intl/server';
 
-export const metadata = {
-  title: "Eng. Mohammed Maridi | Official Portfolio",
-  description: "The official portfolio of Eng. Mohammed Maridi, Software Engineer and IT Specialist. Showcasing premium cloud systems, web applications, and corporate digital solutions.",
-  icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/icon.png",
-  },
-  openGraph: {
-    title: "Eng. Mohammed Maridi | Official Portfolio",
-    description: "Explore cutting-edge cloud projects and premium web development services tailored for visionary businesses and institutions.",
-    url: "https://mohammedmaridi.com",
-    siteName: "Mohammed Maridi Portfolio",
-    images: [
-      {
-        url: "https://mohammedmaridi.com/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Eng. Mohammed Maridi Portfolio Logo",
+// 🚀 تحويل الـ Metadata لتصبح ديناميكية لتدعم السيو ثنائي اللغة (عربي / إنجليزي) بشكل احترافي
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Metadata' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    icons: {
+      icon: "/icon.png",
+      shortcut: "/icon.png",
+      apple: "/icon.png",
+    },
+    // تهيئة الروابط البديلة (Hreflang) لمنع قوقل من اعتبار المحتوى مكرراً وتوجيه العناكب بدقة
+    alternates: {
+      canonical: `https://mohammedmaridi.com/${locale}`,
+      languages: {
+        ar: 'https://mohammedmaridi.com/ar',
+        en: 'https://mohammedmaridi.com/en',
       },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  verification: {
-    google: "RZ7in97l4Dude9irgKcPop_QJB5F8bQKb5mChRuV1tc", // 🚀 رمز التحقق من قوقل
-  },
-};
+    },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: `https://mohammedmaridi.com/${locale}`,
+      siteName: "Mohammed Maridi Portfolio",
+      images: [
+        {
+          url: "https://mohammedmaridi.com/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: locale === 'ar' ? "شعار محفظة أعمال المهندس محمد مريدي" : "Eng. Mohammed Maridi Portfolio Logo",
+        },
+      ],
+      locale: locale === 'ar' ? "ar_AR" : "en_US",
+      type: "website",
+    },
+    verification: {
+      google: "RZ7in97l4Dude9irgKcPop_QJB5F8bQKb5mChRuV1tc", // 🔒 الحفاظ على رمز التحقق الأخضر الخاص بك في قوقل
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -59,7 +74,7 @@ export default async function LocaleLayout({
     "@type": "Person",
     "name": "Mohammed Maridi",
     "jobTitle": "Software Engineer & IT Specialist",
-    "url": "https://portfolio-mohammed-maridi.vercel.app",
+    "url": "https://mohammedmaridi.com", // 🌐 تم تحديث الرابط هنا ليصبح دومينك الرسمي الجديد ليتطابق مع الفهرسة
     "sameAs": [
       "https://github.com/SWE-M" // رابط حساب الجيت هاب الخاص بك
     ],
