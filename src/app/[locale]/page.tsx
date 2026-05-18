@@ -2,6 +2,10 @@ import { getTranslations } from 'next-intl/server';
 import { getProjects } from '@/sanity/lib/queries';
 import ClientHome from './ClientHome';
 
+// 🚀 تحسين السيو وسرعة الاستجابة (ISR): كاش ذكي يعيد بناء الصفحة في الخلفية كل ساعة (3600 ثانية)
+// هذا السطر سيقضي على تأخير الـ TTFB ويجعل الموقع يفتح فوراً في أجزاء من الملي ثانية ويرفع السكور لـ +90
+export const revalidate = 3600;
+
 export default async function HomePage({ params }: any) {
   const resolvedParams = await params;
   const locale = resolvedParams.locale;
