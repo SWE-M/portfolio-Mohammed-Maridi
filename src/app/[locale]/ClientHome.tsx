@@ -176,7 +176,7 @@ export default function ClientHome({ projects, texts }: { projects: any[], texts
           className="rounded-[2rem] md:rounded-[3rem] backdrop-blur-2xl bg-white/5 border border-white/10 p-6 md:p-20 text-center shadow-2xl overflow-hidden relative"
         >
           <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none"></div>
-          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#8A1538]/10 blur-[100px] rounded-full pointer-events-none"></div>
 
           <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
             {texts.contactTitle}
@@ -209,7 +209,7 @@ export default function ClientHome({ projects, texts }: { projects: any[], texts
 
             <div className="p-4 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all flex flex-col items-center justify-between group hover:-translate-y-2 duration-300">
               <div className="mb-4 md:mb-8 text-center">
-                <span className="text-[10px] md:text-sm text-[#8A1538]block mb-1 md:mb-3 font-mono uppercase tracking-widest">{texts.qatari}</span>
+                <span className="text-[10px] md:text-sm text-[#8A1538] block mb-1 md:mb-3 font-mono uppercase tracking-widest">{texts.qatari}</span>
                 <a href="tel:+97470197304" className="text-[10px] sm:text-base md:text-3xl font-bold text-white block" dir="ltr">
                   +974 7019 7304
                 </a>
