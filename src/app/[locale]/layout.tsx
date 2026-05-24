@@ -31,13 +31,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('title'),
       description: t('description'),
       url: `https://mohammedmaridi.com/${locale}`,
-      siteName: "Mohammed Maridi Portfolio",
+      siteName: "Mohammed Ahmed Maridi Portfolio",
       images: [
         {
           url: "https://mohammedmaridi.com/og-image.png",
           width: 1200,
           height: 630,
-          alt: locale === 'ar' ? "شعار محفظة أعمال المهندس محمد مريدي" : "Eng. Mohammed Maridi Portfolio Logo",
+          alt: locale === 'ar' ? "شعار محفظة أعمال المهندس محمد احمد مريدي" : "Eng. Mohammed Ahmed Maridi Portfolio Logo",
         },
       ],
       locale: locale === 'ar' ? "ar_AR" : "en_US",
@@ -73,7 +73,7 @@ export default async function LocaleLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Mohammed Maridi",
+    "name": "Mohammed Ahmed Maridi",
     "jobTitle": "Software Engineer & IT Specialist",
     "url": "https://mohammedmaridi.com", // 🌐 تم تحديث الرابط هنا ليصبح دومينك الرسمي الجديد ليتطابق مع الفهرسة
     "sameAs": [
