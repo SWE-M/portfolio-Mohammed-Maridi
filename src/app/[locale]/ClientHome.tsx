@@ -64,9 +64,12 @@ export default function ClientHome({ projects, texts }: { projects: any[], texts
           animate="visible"
           className="px-6 py-12 md:px-16 md:py-24 rounded-[2.5rem] backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl max-w-4xl w-full"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">
-  {texts.heroTitle}
-</h1>
+          <motion.h1 
+            variants={fadeInUp}
+            className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4 whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-emerald-400 to-teal-100"
+          >
+            {texts.heroTitle}
+          </motion.h1>
           
           <motion.h2 
             variants={fadeInUp}
