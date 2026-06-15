@@ -91,10 +91,10 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={dir}>
       <head>
-        {/* 🚀 كود أدسينس الرسمي والموثق الخاص بالبشمهندس محمد - مربوط بالـ pub-id الصريح */}
+        {/* 🚀 تم تحديث كود أدسينس للربط بالمعرف القطري الجديد التابع للبشمهندس محمد (pub-5036112046541946) */}
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7660965660291724"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5036112046541946"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
