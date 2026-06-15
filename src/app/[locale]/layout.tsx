@@ -5,8 +5,9 @@ import { routing } from '@/i18n/routing';
 import '../globals.css';
 import { getTranslations } from 'next-intl/server';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import Script from 'next/script'; // 🚀 استيراد مكون السكربت الذكي من Next.js
 
-// 🚀 تحويل الـ Metadata لتصبح ديناميكية لتدعم السيو ثنائي اللغة (عربي / إنجليزي) بشكل احترافي
+// تحويل الـ Metadata لتصبح ديناميكية لتدعم السيو ثنائي اللغة (عربي / إنجليزي) بشكل احترافي
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Metadata' });
@@ -89,6 +90,15 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={dir}>
+      <head>
+        {/* 🚀 كود أدسينس الرسمي والموثق الخاص بالبشمهندس محمد - مربوط بالـ pub-id الصريح */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7660965660291724"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="bg-slate-900 text-white min-h-screen">
         {/* حقن بيانات السيو الهيكلية (Schema Markup) */}
         <script
