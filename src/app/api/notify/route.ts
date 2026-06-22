@@ -13,13 +13,16 @@ export async function POST(request: Request) {
         const counterResponse = await fetch('https://api.counterapi.dev/v1/mohammedmaridi/portfolio/up');
         if (counterResponse.ok) {
           const counterData = await counterResponse.json();
-          visitNumber = ` [Total: ${counterData.value}]`;
+          
+          // 🚀 تم التصحيح هنا: استخدام count بدلاً من value لقرائتها بشكل صحيح
+          const finalCount = counterData.count || counterData.value || "1";
+          visitNumber = ` [Total: ${finalCount}]`;
         }
       } catch (counterError) {
         console.error("Counter API Error:", counterError);
       }
 
-      // النص النهائي الذي سيطير للشاشة ويحتوي على العداد
+      // النص النهائي الذي سيطير للشاشة ويحتوي على العداد الصحيح
       eventText = `Portfolio : Someone Visited!${visitNumber}`;
 
     } else if (type === 'request') {
@@ -28,8 +31,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid type" }, { status: 400 });
     }
 
-    // 🚀 تم حقن مفتاحك الذهبي هنا مباشرة ليتخطى عقبة الـ Environment Variables في Vercel
-    // أعد السطر إلى هذا الشكل الآمن
     const aioKey = process.env.ADAFRUIT_AIO_KEY || '';
 
     // إرسال النص المحدث إلى صندوق Adafruit IO الخاص بك
