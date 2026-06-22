@@ -2,7 +2,7 @@
 
 import SceneWrapper from '@/components/SceneWrapper';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // 🚀 تمت إضافة useEffect هنا لتلقف الزيارات
 import Image from 'next/image'; // 🚀 استيراد مكون الصور الذكي من Next.js
 
 // إعدادات الحركة لظهور العناصر بنعومة
@@ -20,6 +20,15 @@ export default function ClientHome({ projects, texts }: { projects: any[], texts
   // حالات التحكم في الفورم
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  // 🚀 1. إرسال تنبيه الزيارة الفورية لقطعة الـ ESP32 فور دخول أي شخص للموقع
+  useEffect(() => {
+    fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'visit' })
+    }).catch(err => console.error("Error sending visit alert:", err));
+  }, []);
 
   // دالة الإرسال في الخلفية بدون الخروج من الموقع
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -39,6 +48,14 @@ export default function ClientHome({ projects, texts }: { projects: any[], texts
       if (response.ok) {
         setIsSuccess(true);
         formTarget.reset(); // استخدام النسخة المحفوظة لتفريغ الحقول
+        
+        // 🚀 2. إرسال تنبيه الطلب الجديد لقطعة الـ ESP32 فور نجاح الإرسال واكتماله
+        fetch('/api/notify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: 'request' })
+        }).catch(err => console.error("Error sending request alert:", err));
+
         // إخفاء رسالة النجاح بعد 5 ثواني
         setTimeout(() => setIsSuccess(false), 5000);
       }
@@ -65,12 +82,12 @@ export default function ClientHome({ projects, texts }: { projects: any[], texts
           className="px-6 py-12 md:px-16 md:py-24 rounded-[2.5rem] backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl max-w-4xl w-full"
         >
           <motion.h1 
-  variants={fadeInUp}
-  // تم تصغير أحجام الخطوط لتناسب المساحة
-  className="text-xl sm:text-3xl md:text-5xl font-bold mb-4 whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-emerald-400 to-teal-100"
->
-  {texts.heroTitle}
-</motion.h1>
+            variants={fadeInUp}
+            // تم تصغير أحجام الخطوط لتناسب المساحة
+            className="text-xl sm:text-3xl md:text-5xl font-bold mb-4 whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-emerald-400 to-teal-100"
+          >
+            {texts.heroTitle}
+          </motion.h1>
           
           <motion.h2 
             variants={fadeInUp}
