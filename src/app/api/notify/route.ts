@@ -6,34 +6,18 @@ export async function POST(request: Request) {
     let eventText = "";
 
     if (type === 'visit') {
-      let visitNumber = "";
-      
-      // استدعاء خدمة العداد المجانية لزيادة العدد بمقدار 1 وجلب الرقم الحالي
-      try {
-        const counterResponse = await fetch('https://api.counterapi.dev/v1/mohammedmaridi/portfolio/up');
-        if (counterResponse.ok) {
-          const counterData = await counterResponse.json();
-          
-          // 🚀 تم التصحيح هنا: استخدام count بدلاً من value لقرائتها بشكل صحيح
-          const finalCount = counterData.count || counterData.value || "1";
-          visitNumber = ` [Total: ${finalCount}]`;
-        }
-      } catch (counterError) {
-        console.error("Counter API Error:", counterError);
-      }
-
-      // النص النهائي الذي سيطير للشاشة ويحتوي على العداد الصحيح
-      eventText = `Portfolio : Someone Visited!${visitNumber}`;
-
+      // 🚀 نرسل كلمة Visit صافية لكي تلتقطها الشاشة وتزيد عداد الـ 24 ساعة الخاص بها
+      eventText = "Portfolio : Visit";
     } else if (type === 'request') {
-      eventText = "Portfolio : New Request Submitted!";
+      // 🚀 نرسل كلمة Request صافية عند رفع طلب مشروع
+      eventText = "Portfolio : Request";
     } else {
       return NextResponse.json({ error: "Invalid type" }, { status: 400 });
     }
 
     const aioKey = process.env.ADAFRUIT_AIO_KEY || '';
 
-    // إرسال النص المحدث إلى صندوق Adafruit IO الخاص بك
+    // إرسال الإشارة الصافية إلى Adafruit
     const response = await fetch('https://io.adafruit.com/api/v2/hmm1999/feeds/alerts/data', {
       method: 'POST',
       headers: {
