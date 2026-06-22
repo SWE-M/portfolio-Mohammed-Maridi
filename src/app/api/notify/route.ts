@@ -2,22 +2,41 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
-    const { type } = await request.json(); // نحدد هنا إن كانت زيارة أو طلب جديد
+    const { type } = await request.json(); 
     let eventText = "";
 
     if (type === 'visit') {
-      eventText = "Portfolio : Someone Visited the Site!";
+      let visitNumber = "";
+      
+      // استدعاء خدمة العداد المجانية لزيادة العدد بمقدار 1 وجلب الرقم الحالي
+      try {
+        const counterResponse = await fetch('https://api.counterapi.dev/v1/mohammedmaridi/portfolio/up');
+        if (counterResponse.ok) {
+          const counterData = await counterResponse.json();
+          visitNumber = ` [Total: ${counterData.value}]`;
+        }
+      } catch (counterError) {
+        console.error("Counter API Error:", counterError);
+      }
+
+      // النص النهائي الذي سيطير للشاشة ويحتوي على العداد
+      eventText = `Portfolio : Someone Visited!${visitNumber}`;
+
     } else if (type === 'request') {
       eventText = "Portfolio : New Request Submitted!";
     } else {
       return NextResponse.json({ error: "Invalid type" }, { status: 400 });
     }
 
-    // إرسال النص الصافي مباشرة إلى صندوق Adafruit IO الخاص بك
+    // 🚀 تم حقن مفتاحك الذهبي هنا مباشرة ليتخطى عقبة الـ Environment Variables في Vercel
+    // أعد السطر إلى هذا الشكل الآمن
+    const aioKey = process.env.ADAFRUIT_AIO_KEY || '';
+
+    // إرسال النص المحدث إلى صندوق Adafruit IO الخاص بك
     const response = await fetch('https://io.adafruit.com/api/v2/hmm1999/feeds/alerts/data', {
       method: 'POST',
       headers: {
-        'X-AIO-Key': process.env.ADAFRUIT_AIO_KEY || '',
+        'X-AIO-Key': aioKey,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ value: eventText })
